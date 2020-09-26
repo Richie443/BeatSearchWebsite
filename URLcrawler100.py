@@ -7,7 +7,7 @@ Created on Sat Sep 26 19:57:46 2020
 
 import bs4 
 from selenium import webdriver 
-import URLtoMp3
+from URLtoMp3 import TransURLToMp3,MoveFileToFolder
 import time
 from selenium.webdriver.common.keys import Keys
 
@@ -46,8 +46,7 @@ def main():
         print(urlCount) 
 
     print("End for Search，Prepare to Download and Trans")
-    id=0
-    for key,value in youtubeLinks.items:
+    for key,value in youtubeLinks.items():
         TransURLToMp3(value,key)
     print("Finished Download ，Excute MoveFile")
     MoveFileToFolder()
