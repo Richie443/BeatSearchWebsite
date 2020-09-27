@@ -50,7 +50,8 @@ def MoveFileToFolder(folderName):
 # =============================================================================
     if not os.path.exists(folderName):          #檢查有無過新增資料夾
         os.mkdir(folderName)
-    os.system('move .\\*.mp3 .\\{folderName}\\') #把跟程式同層的.mp3黨 存進 資料夾裡
+    filepath="move .\\*.mp3 .\\"+folderName+"\\"
+    os.system(filepath) #把跟程式同層的.mp3黨 存進 資料夾裡
     print("finish")
 
 
@@ -96,12 +97,11 @@ def main():
         
         try:
             #print(key,value)
-            print(key," Now prepare Download")
+            print(key,"/",urlCount," Now prepare Download")
             threading.Thread(target=TransURLToMp3(value,key)).start()       #下載url
         except:
             print("Key : ",key," has some Problem Error !! ")   
     print("Finished Download ，Excute MoveFile")
     MoveFileToFolder(folderName)
-    
-        
+     
 main()
