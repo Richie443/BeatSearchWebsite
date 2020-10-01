@@ -18,12 +18,12 @@ hrefs = soup.find_all("a", class_="yt-simple-endpoint style-scope ytd-playlist-v
 base = "https://www.youtube.com"
 URLlist = []
 id = 0
-#file = open("YoutubeURL_chillBeat2.txt","w")
+
 for a in hrefs:
     temp = base + a['href']
-    name = YouTube(temp).streams.first().download()
-    print(name)
-    video=VideoFileClip(name)
+    path = YouTube(temp).streams.first().download()
+    print(path)
+    video=VideoFileClip(path)
     video.audio.write_audiofile(str(id) + '.mp3')
     id+=1
     #print(id)
